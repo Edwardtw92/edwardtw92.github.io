@@ -1,0 +1,559 @@
+\documentclass[11pt]{article}
+\input{~/Documents/Undergrad/preamble.tex}
+\usepackage[left=1.5cm, right=1.5cm, top=1.3cm, includehead, includefoot]{geometry}
+
+%% header
+\pagestyle{fancy}
+\fancyhead[L]{\bf\large AMATH 475: Introduction to General Relativity}
+\fancyhead[R]{\bf\large Edward Chang}
+% \fancyfoot[C]{Page \thepage\ of 2}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{35pt}
+%==============================================================================================
+
+\begin{document}
+\begin{titlepage}
+	\begin{center}
+		\vspace*{4cm}
+		\textbf{AMATH 475}
+
+		University of Waterloo
+
+		Taught by: Eduardo Martin-Martinez
+
+		Updated: \today
+
+		\vspace{1.5cm}
+		\textbf{Edward Chang}
+	\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+%==============================================================================================
+
+\fancyhead[L]{\bf\large AMATH 475: Introduction to General Relativity\\ \small{\leftmark}}
+\fancyhead[R]{\bf\large Edward Chang\\ \small{\rightmark}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+% \fancyfoot[C]{Page \thepage\ of 2}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{35pt}
+%==============================================================================================
+
+\section{Index Notation}
+\begin{defm}{Covariant}
+	Objects that transforms under change of basis like the element of the basis are called \textbf{covariant}, and its components have sub-indicies.
+\end{defm}
+
+\begin{defm}{Contravariant}
+	Objects that transforms under change of basis like components of vectors are called \textbf{contravariant} and its components have super-indicies.
+\end{defm}
+
+\begin{defm}{Dual Basis \& Dual Space}
+	The \textbf{dual basis} to \(\mathcal{B} = \left\{ \mathsf{e}_{1}, \dots, \mathsf{e} _{n} \right\} \) is \(\mathbb{B} ^{\star} = \left\{ \mathsf{e}^{1}, \dots, \mathsf{e}^{n} \right\}\) and it is the collection of linear operators such that \(\mathsf{e}^{i} (\mathsf{e}_{j}) = \delta ^{i} _{j}\). \(\mathbb{B}^{\star}\) spans a vector space \(V ^{\star}\) called the \textbf{dual space} of \(V\).
+\end{defm}
+\newpage
+%==============================================================================================
+
+\section{Special Relativity}
+\subsection{Postulates of Special Relativity}
+\begin{defn}{Event}
+	An \textbf{event} is an individual point in spacetime, usually labelled which we represent by the tuple \(E \equiv \left( t, \vec{x} \right) \), \(t\) is the \textit{time coordinate} and \(\vec{x} \equiv \left( x, y, z \right) \) is the \textit{space coordinates}.
+\end{defn}
+
+\begin{defn}{Spacetime}
+	\textbf{Spacetime} is the set of all events, \(\mathbb{S} = \left\{ E \equiv \left( t, \vec{x} \right): t \in R, \vec{x} \in \R ^{3}  \right\} \).
+\end{defn}
+\begin{defm}{Reference Frame}
+	A \textbf{reference frame}, establishes a spacetime coordinate system \(\left(t, \vec{x} \right) \), which is a spatial coordinate system where the position of point-like particles can be specified, and a clock (something that can measure time).
+\end{defm}
+
+\begin{defm}{Inertial Reference Frame (IRF)}
+	An \textbf{inertial reference frame} is a reference frame for which a particle stationary at it origin experience no force (Newton's first law holds).
+\end{defm}
+
+\begin{defm}{Postulates of Special Relativity 1 (SR): Principle of Relativity}
+	\begin{enumerate}[leftmargin=*, label=\arabic*.]
+		\item \textbf{Principle of Relativity:} In the absence of gravity, all the laws of physics are identical in all inertial reference frames (This postulate is also in Galilean relativity).
+		\item \textbf{Speed of Light is Constant and Equal:} The speed of light in vacuum ``\(c\)'' is constant and the same for all inertial reference frames (absense of gravity).
+	\end{enumerate}
+\end{defm}
+
+\subsection{Lorentz Transformation}
+\begin{defn}{Galilean Transformation}
+	Consider two inertial frames \(S \equiv \left( t, \vec{x} \right) \) and \(S' \equiv \left( t', \vec{x}' \right) \), where \(S'\) moves with velocity \(\vec{v} = v \hat{x}\) to the right relative to \(S\).
+	The \textbf{Galilean transformation} (Galilean boost) from \(S\) to \(S'\) is:
+	\[
+		\begin{cases}
+			x' = x - v t\\
+			y' = y\\
+			z' = z\\
+			t' = t
+		\end{cases}
+	\]
+	Note: Galilean transformation would result in mathematical inconsistency (todo).
+\end{defn}
+
+\begin{defm}{Spacetime Interval}
+	Given a particular inertial reference frame that establishes space time coordinates \(\left( t, \vec{x} \right) \), the \textbf{spacetime interval} between two events \(E _{1} \equiv (t _{1}, \vec{x} _{1})\) and \(E _{2} \equiv \left( t _{2}, \vec{x} _{2} \right) \) is \(\Delta s ^{2} := - c ^{2} \Delta t ^{2} + \Delta \vec{x} ^{2} = - c ^{2} \left( t _{2} - t _{1} \right) ^{2} + \left( \vec{x} _{2} - \vec{x} _{1} \right) ^{2} \).
+	\begin{noot}
+		In this course we use the signature \(\left( -, +, +, + \right) \).
+	\end{noot}
+	\begin{remarkbox}
+		If the two events are connected by the propagation of light, \(\Delta \vec{x} ^{2} = c ^{2} \Delta t ^{2} \implies \Delta s ^{2} = - c ^{2} \Delta t ^{2} + c ^{2} \Delta t ^{2} = 0\).
+	\end{remarkbox}
+\end{defm}
+
+\begin{noot}
+	Possible transformations between two inertial reference frames: 3 rotations, 3 translations, 1 times shift, 3 boosts.
+
+	However, the spatial distance \(\| \vec{x} _{2} - \vec{x} \|\) is invariant under rotations and translations. Similarly, \(\Delta t = t _{2} - t _{1}\) is invariant under time shift. So the only transformations with significance are the boost.
+\end{noot}
+\newpage
+%==============================================================================================
+
+\section{Differential Geometry}
+\subsection{Topology}
+\begin{defn}{Topology}
+	A \textbf{topology on a set \(X\)}, \(S\) is a collection of open sets of \(X\), and \(S\) is a subset of the power set of \(X\).
+	\(S\) satisfies:
+	\begin{enumerate}[label=\arabic*)]
+		\item \(\varnothing, X \in S\).
+		\item Any union of elements of \(S\) is in \(S\).
+		\item Any finite intersection of  elements of \(S\) is in \(S\).
+	\end{enumerate}
+\end{defn}
+
+\begin{defm}{Topological Space}
+	A \textbf{topological space} \(\left( X, S \right) \), is an ordered pair where \(X\) is a set and \(S\) is a topology of \(X\).
+\end{defm}
+
+\subsection{Manifolds}
+\begin{defn}{Homeomorphism}
+	A \textbf{homeomorphism} between two topological spaces \(X\) and \(Y\) is a map \(\sigma: X \to Y\) such that the map is topologically continuous and it's inverse is topologically continuous (\(\phi\) is a bijection).
+\end{defn}
+
+\begin{defn}{Hausdorff Space}
+	A topological space \(X\) is a \textbf{Hausdorff space} if for all distinct points \(x, y \in X\) there exists neighbourhoods of \(x\) and \(y\), \(\mathcal{U} _{x}, \mathcal{U} _{y}\) respectively, such that \(\mathcal{U} _{x} \cap \mathcal{U} _{y} = \varnothing\).
+\end{defn}
+
+\begin{defm}{Topological Manifolds}
+	A \textbf{topological manifold} of dimension \(n\), \(\mathcal{M}\) is a topological space that is \textbf{Hausdorff} and at every point possess an open neighbourhood homeomorphic to \(\R ^{n}\).
+
+	Note: The proper definition also requires that the space is second countable.
+\end{defm}
+
+\begin{defn}{Charts}
+	A \textbf{chart} \(\left( \mathcal{U} _{\alpha}, \phi _{\alpha} \right) \), where \(\phi _{\alpha}\) is a homeomorphism from an open subset \(\mathcal{U} _{\alpha} \subseteq \mathcal{M}\) to \(\R ^{n}\). Note: \(\phi _{\alpha}: \mathcal{U} \underset{open}{\subseteq} M \to \R ^{n}\), and \(\phi _{\alpha} (\mathsf{x}) \equiv x ^{\mu}\), \(x ^{\mu}\) is the coordinate in \(\R ^{n}\).
+\end{defn}
+
+\begin{defn}{Transition Map}
+	Consider two charts of \(\mathcal{M}\), \(\left( \mathcal{U} _{\alpha}, \phi _{\alpha} \right) \) and \(\left( \mathcal{U} _{\beta}, \phi _{\beta} \right) \), where \(\mathcal{U} _{\alpha} \cap \mathcal{U} _{\beta} \neq \varnothing\). The \textbf{transition map} is a homeomorphism from \(\phi _{\alpha} \left( \mathcal{U} _{\alpha} \cap \mathcal{U} _{\beta} \right) \to \phi _{\beta} \left( \mathcal{U} _{\alpha} \cap \mathcal{U} _{\beta} \right)  \), defined by \(\phi _{\beta} \circ \phi _{\alpha} ^{-1}\).
+\end{defn}
+
+\begin{defn}{Smooth Atlas}
+	A \textbf{smooth atlas} is a set of charts covering the whole manifold such that the transition map \(\phi _{\alpha} \circ \phi _{\beta} ^{-1}\) are \(C ^{\infty}\).
+\end{defn}
+
+\begin{defm}{Smooth Manifold}
+	A \textbf{smooth manifold} is a topological manifold that has a smooth atlas.
+\end{defm}
+
+\subsection{Structures on Manifold}
+\subsubsection{Curves and Functions}
+\begin{defm}{Curve on Manifold}
+	A \textbf{curve} on a manifold \(\mathcal{M}\) is a smooth and invertible map \(\gamma : \R \to M\).
+
+	Note: check if it is actually smooth and invertible.
+\end{defm}
+
+\begin{defm}{Functions on Manifold}
+	A \textbf{function} on a manifold \(\mathcal{M}\) is a map \(f: M \to \R\).
+
+	\(\bar{f} := f \circ \phi ^{-1}: \R ^{n} \to \R\).
+
+	Note that \(f\) and \(\bar{f}\) are not necessarily invertible, \(f\) is smooth if and only if \(\bar{f}\) is \(C ^{\infty}\).
+\end{defm}
+
+\subsubsection{Vectors}
+\textbf{Motivation:} We want to be able to define the notion of direction on manifold \(\mathcal{M}\). To do so we want to relate derivatives and curves to directions.
+
+\begin{defm}{Coordinate Curves}
+	\textbf{Coordinate curves} of a chart are the image of the axes in \(\R ^{n}\) under \(\phi ^{-1}\).
+\end{defm}
+
+\begin{defm}{Tangent Vector}
+	The \textbf{tangent vector} to \(\gamma\) at \(\tau _{0}\) is \(\partial _{\tau} | _{\tau _{0}} = \frac{d}{d \tau} | _{\tau _{0}} = \frac{d x ^{\mu}}{d \tau} \partial _{\mu} | _{\tau _{0}}\).
+
+	And \(\Upsilon _{\mu} (f) | _{\tau _{0}} = \partial _{\mu} \bar{f} | _{\tau _{0}}\).
+
+\end{defm}
+
+\begin{defm}{Tangent Space \(T _{p} \mathcal{M}\)}
+	The set \(T _{p} \mathcal{M}\) is the \textbf{tangent space} of all the vectors \(\mathsf{v}_{p}\) at a point \(p \in M\), and it has dimension equal to \(\dim(\mathcal{M})\). We call \(T _{p} \mathcal{M}\) the \textbf{tangent space to \(\mathcal{M}\) at \(p \in \mathcal{M}\)}.
+\end{defm}
+
+\begin{defn}{Coordinate Basis}
+	The set \(\left\{ \Upsilon _{p\, \mu} \right\} \) is the \textbf{coordinate basis} of \(T _{p} \mathcal{M}\) is the set of vectors tangent to the coordinate curves of chart \(\left( \mathcal{U}, \phi \right) \).
+	\begin{noot}
+		Every chart comes with a coordinate basis and every coordinate basis defines a chart.
+	\end{noot}
+\end{defn}
+
+\begin{thm}{Coordinate Basis and Commutativity}	
+	A basis of \(\left\{ \Upsilon _{\mu} \right\} \) \(T _{p} ^{\star} \mathcal{M}\) is a coordinate basis \(\iff \left[ \Upsilon _{\mu}, \Upsilon _{\nu} \right] = 0\).
+\end{thm}
+
+\begin{defm}{Basis Transformation}
+	Consider \(\frac{\partial}{\partial x ^{\prime \mu}} = \frac{\partial x ^{\nu}}{\partial x ^{\prime \mu}} \frac{\partial}{\partial x ^{\nu}}\). Implying \(\partial ' _{\mu} = \Lambda \indices{_{\mu} ^{\nu}} \partial _{\nu}\) with \(\Lambda \indices{_{\mu} ^{\nu}} = \frac{\partial x ^{\nu}}{\partial x ^{\prime \mu}}\).
+\end{defm}
+
+\begin{defm}{Vector Field}
+	A \textbf{vector field} over \(\mathcal{M}\) is a set of vectors of \(T _{p} \mathcal{M}\) for each \(p \in \mathcal{M}\) such that their components in any coordinate basis are smooth functions. Note that vector fields follows Leibniz rule.
+\end{defm}
+
+\begin{defm}{Composition of Vector Fields}
+	\(\left( \mathsf{v} \circ \mathsf{w} \right) (f) := \mathsf{v} \left[ \mathsf{w} (f) \right]  \). The composition of vector fields does not obey the Leibniz rule and hence is not a vector field.
+	\begin{noot}
+		\(\left( \mathsf{v} \circ \mathsf{w} \right) \left( f g \right) = f \cdot \left( \mathsf{v} \circ \mathsf{w} \right) (g) + g \cdot \left( \mathsf{v} \circ \mathsf{w} \right)  (f) + \mathsf{w} (f) \cdot \mathsf{v} (g) + \mathsf{v} (f) \cdot \mathsf{w} (g) \neq f \cdot \left( \mathsf{v} \circ \mathsf{w} \right)(g) + g \cdot \left( \mathsf{v} \circ \mathsf{w} \right) (f)\).
+	\end{noot}
+\end{defm}
+
+\begin{defm}{Lie Bracket of Vector Fields}
+	The \textbf{Lie brackets of vector field} is a binary operator such that \(\left[ \cdot, \cdot  \right] : (A, B) \mapsto AB - BA\). And Lie brackets satisfies:
+	\begin{enumerate}[label=\arabic*)]
+		\item Antisymmetry: \(\left[ \mathsf{v}, \mathsf{w} \right] = - \left[ \mathsf{w}, \mathsf{v} \right] \).
+		\item Jacobi Identity: \(\left[ \mathsf{u}, \left[ \mathsf{v}, \mathsf{w} \right]  \right] + \left[ \mathsf{w}, \left[ \mathsf{u}, \mathsf{v} \right]  \right] + \left[ \mathsf{v}, \left[ \mathsf{w}, \mathsf{u} \right]  \right] = 0\)
+	\end{enumerate}
+	The Lie bracket of vector fields is a vector field.
+	\begin{remarkbox}
+		In a coordinate basis, \(\left\{ \Upsilon _{\mu} \right\} = \left\{ \partial _{\mu} \right\} \), \(\left[ \mathsf{v}, \mathsf{w} \right] ^{\mu} = v ^{\nu} \partial _{\nu} w ^{\mu} - w ^{\nu} \partial _{\nu} v ^{\mu}\).
+	\end{remarkbox}
+\end{defm}
+
+\subsubsection{1-Forms}
+\begin{defm}{1-Form}
+	A \textbf{1-form}, \(\mathsf{\omega}\), is a real linear functional over \(T _{p} \mathcal{M}\), \(\mathsf{\omega}: T _{p} \mathcal{M} \to \R\) defined by \(\mathsf{\omega : T _{p} \mathcal{M} \to \R}\) defined by \(\mathsf{\omega}: \mathsf{v} \mapsto \left< \mathsf{\omega}, \mathsf{v} \right>\). Note: 1-forms are sometimes called covariant vectors.
+\end{defm}
+
+\begin{defn}{Cotangent Space and Dual Basis}
+	Given an arbitrary basis \(\left\{ \mathsf{e} _{a} \right\} \) of \(T _{p} \mathcal{M}\). There exists an unique set of 1-forms \(\left\{ \mathsf{e} ^{a} \right\} \) such that \(\left<\mathsf{e} ^{a}, \mathsf{e} _{b} \right> = \delta _{b} ^{a}\). This set is linear independent and forms a basis of the \textbf{cotangent space} \(T _{p} ^{\star} \mathcal{M}\). We call \(\left\{ \mathsf{e} _{a} \right\} \) the \textbf{dual basis}.
+	\begin{noot}
+		Elements of \(T _{p} \mathcal{M}\) also acts linearly on \(T _{p} ^{\star} \mathcal{M}\) \(\implies  T _{p} ^{\star \star} \mathcal{M} = T _{p} \mathcal{M}\).
+	\end{noot}
+	\begin{remarkbox}
+		\(\left< \mathsf{\omega}, \mathsf{v} \right> = \left< \omega _{a} \mathsf{e ^{a}}, v ^{b} \mathsf{e} _{b} \right> = \omega _{a} v ^{b}\).
+
+		\(\mathsf{e}' _{a} = \Lambda \indices{_{a} ^{b}} \mathsf{e} _{b}\) and \(\mathsf{e} ^{ \prime a} = \tilde{\Lambda} \indices{^{a} _{b}} \mathsf{e} ^{b}\).
+	\end{remarkbox}
+\end{defn}
+
+\begin{defm}{Differential}
+	Each functions \(f\) over \(\mathcal{M}\) defines a 1-form \(\mathsf{d} f | _{p}\) at the point \(p \in \mathcal{M}\) that we call the \textbf{differential} of \(f\). \(\mathsf{d} f\) is defined by \(\left<\mathsf{d} f, \mathsf{v}\right> = \mathsf{v}(f)\). Note that \(f: \mathcal{M} \to \R\).
+
+	In a coordinate basis \(\left\{ \Upsilon _{\mu} \right\} \), \(df = \partial _{\mu} \bar{f} \Upsilon ^{\mu} = \partial _{\mu} f \Upsilon ^{\mu}\).
+\end{defm}
+
+\begin{defm}{Coordinate Basis (Dual)}
+	The coordinate basis of \(T _{p} ^{\star} \mathcal{M}\), \(\left\{ \Upsilon ^{\mu} \right\} \) is often represented by \(\left\{ \mathsf{d} x ^{\mu} \right\} \). (Can see by considering \(f(\mathsf{x}) = x ^{\mu} (\mathsf{x})\), note that this \(\mu\) is not being summed over.)
+
+	\begin{remarkbox}
+		\(\Upsilon ^{ \prime \mu} = \tilde{\Lambda} \indices{^{\mu} _{\nu}} \Upsilon ^{\nu} \iff \mathsf{d} x ^{ \prime \mu} = \tilde{\Lambda} \indices{^{\mu} _{\nu}} d x ^{\nu}\).
+		
+		\(\left< \Upsilon ^{ \prime \mu}, \Upsilon ' _{\nu} \right> = \left< \Upsilon ^{\mu}, \Upsilon _{\nu} \right> = \delta _{\nu} ^{\mu}\)
+
+		\(\omega ' _{\mu} = \Lambda \indices{_{\mu} ^{\nu}} \omega _{\nu}\)
+	\end{remarkbox}
+\end{defm}
+
+\subsubsection{Tensors}
+\begin{defm}{Tensor of Type \(\left( r, s \right) \)}
+	A \textbf{tensor of type \(\left( r, s \right) \)} is a multilinear map that acts on the vector space \(\left( T _{p} \right) ^{r} _{s} \mathcal{M} = \left( T _{p} ^{\star} \mathcal{M} \right) ^{\times r} \times \left( T _{p} \mathcal{M} \right) ^{\times s}\). Tensor of type \(\left( r, s \right) \) are called \(r\)-times contravariant and \(s\)-times covariant.
+\end{defm}
+
+\begin{defm}{Components of Tensor and Action of Tensor}
+	A tensor \(\mathsf{T} \in \left( T _{p} \right) ^{r} _{s} \mathcal{M}\) is completely characterized by its action on a basis of \(\left( T _{p} \right) ^{s} _{r} \mathcal{M}\).
+
+	The \textbf{components} of \(\mathsf{T}\) are \(\mathsf{T} \left( \Upsilon ^{\alpha _{1}}, \dots, \Upsilon ^{\alpha _{r}}, \Upsilon _{\beta _{1}}, \dots, \Upsilon _{\beta _{s}} \right) = T \indices{ ^{\alpha _{1} \dots \alpha _{r}} _{\beta _{1} \dots \beta _{s}}}\).
+
+	The \textbf{action} of \(\mathsf{T}\) on arbitrary 1-forms and vectors is \(\mathsf{T} \left( \mathsf{\omega}, \mathsf{\sigma}, \dots, \mathsf{v}, \mathsf{w}, \dots \right) = T \indices{ ^{a b \dots} _{c d \dots}} \omega _{a} \sigma _{b} \dots v ^{c} w ^{d}\).
+\end{defm}
+
+\begin{defm}{Transformation of Tensor Components}
+	Examples:
+	\begin{enumerate}[label=\arabic*)]
+		\item \({T'} \indices{^{a} _{b}} = \mathsf{T} \left( \tilde{\Lambda} \indices{^{a} _{c}} \Upsilon ^{c}, \Lambda \indices{_{b} ^{d}} \Upsilon _{d} \right) = \tilde{\Lambda} \indices{^{a} _{c}} \Lambda \indices{_{b} ^{d}} \mathsf{T} \left( \Upsilon ^{c}, \Upsilon _{d} \right) = \tilde{\Lambda} \indices{^{a} _{c}} \Lambda \indices{_{b} ^{d}} T \indices{^{c} _{d}}\).
+		\item \({T'} \indices{_{c} ^{a b}} = \Lambda \indices{ _{c} ^{d}} \tilde{\Lambda} \indices{^{a} _{e}} \tilde{\Lambda} \indices{^{b} _{f}} T \indices{_{d} ^{e f}}\).
+	\end{enumerate}
+	Question: Ordering of indices?
+\end{defm}
+
+\subsubsection{Tensor Operations}
+\begin{defn}{Symmetrization}
+	\(T \indices{^{a _{1} \dots a _{r}} _{c _{1} \dots c _{t} \left( b _{1} \dots b _{s} \right) }} := \frac{1}{s !} \sum _{\pi} T \indices{^{a _{1} \dots a _{r}} _{c _{1} \dots c _{t} \pi(b _{1}) \dots \pi(b _{s})}}\).
+
+	Examples:
+	\begin{enumerate}[label=\arabic*)]
+		\item \(T \indices{_{\alpha \left( \mu \nu \right) }} = \frac{1}{2 !} \left( T \indices{_{\alpha \mu \nu}} + T \indices{_{\alpha \nu \mu}} \right) \).
+		\item \(T \indices{_{\mu (\nu}} R \indices{ _{\alpha ) \beta \gamma}} = \frac{1}{2 !} \left( T \indices{_{\mu \nu}} R \indices{_{\alpha \beta \gamma}} + T \indices{_{\mu \alpha}} R \indices{_{\nu \beta \gamma}} \right) \).
+		\item \(T \indices{_{(\mu \alpha \beta)}} = \frac{1}{3 !} \left( T \indices{_{\mu \alpha \beta}} + T \indices{_{\mu \beta \alpha}} + T \indices{_{\alpha \mu \beta}} + T \indices{_{\alpha \beta \mu}} + T \indices{_{\beta \alpha \mu}} + T \indices{_{\beta \mu \alpha}}\right) \).
+	\end{enumerate}
+\end{defn}
+
+\begin{defm}{Antisymmetrization}
+	\(T \indices{^{a _{1} \dots a _{r}} _{c _{1} \dots c _{t} [b _{1} \dots b _{s}]}} := \frac{1}{s !} \sum _{\pi} \left( -1 \right) ^{\pi} \, T \indices{^{a _{1} \dots a _{r}} _{c _{1} \dots c _{t} \pi(b _{1}) \dots \pi (b _{s})}}\).
+
+	Examples:
+	\begin{enumerate}[label=\arabic*)]
+		\item \(T \indices{_{[\mu \nu]}} = \frac{1}{2 !} \left( T \indices{_{\mu \nu}} - T \indices{_{\nu \mu}} \right) \).
+		\item \(T \indices{_{[\mu \nu] \beta}} = \frac{1}{2 !} \left( T \indices{_{\mu \nu \beta}} - T \indices{_{\nu \mu \beta}} \right) \).
+		\item \(T \indices{_{[\mu \alpha \beta]}} = \frac{1}{3 !} \left( T \indices{_{\mu \alpha \beta}} - T \indices{_{\mu \beta \alpha}} - T \indices{_{\alpha \mu \beta}} + T \indices{_{\alpha \beta \mu}} - T \indices{_{\beta \alpha \mu}} + T \indices{_{\beta \mu \alpha}}\right)\).
+	\end{enumerate}
+\end{defm}
+
+\begin{defm}{Tensor Product}
+	Let \(\mathsf{R} \in \left( T _{p} \right) ^{r} _{s} \mathcal{M}\), \(\mathsf{T} \in \left( T _{p} \right) ^{t} _{q} \mathcal{M}\). Then the \textbf{tensor product} of \(\mathsf{R}\) and \(\mathsf{T}\) is \(\mathsf{R} \otimes \mathsf{T} \in \left( T _{p} \right) ^{r + t} _{s + q} \mathcal{M}\) with components \(\left( \mathsf{R} \otimes \mathsf{T} \right) \indices{^{a _{1} \dots a _{r + t}} _{b _{1} \dots b _{s + q}}} := R \indices{^{a _{1} \dots a _{r}} _{b _{s + 1} \dots b _{s + q}}} \).
+\end{defm}
+
+\begin{defn}{Contraction}
+	Let \(T \in \left( T _{p} \right) ^{r} _{s} \mathcal{M}\) with components \(T \indices{^{a _{1} \dots a _{r}} _{b _{1} \dots b _{s}}}\), we define the \textbf{contraction} of the first covariant and contravariant indices as the tensor \(\mathsf{R} \in \left( T _{p} \right) ^{r - 1} _{s - 1} \mathcal{M}\) as the tensor of components \(R \indices{^{a _{2} \dots a _{r}} _{b _{2} \dots b _{s}}} := T \indices{^{a a _{2} \dots a _{r}} _{a b _{1} \dots b _{s}}}\).
+\end{defn}
+
+\subsubsection{Integration on Manifold and Differential Forms}
+\textbf{Motivation:} In a coordinate basis, \(\mathsf{\omega} = \omega _{\mu} \mathsf{d} x ^{\mu}\). Notice that a curve \(\gamma\) on the manifold \(\mathcal{M}\) is a submanifold of \(\mathcal{M}\). The integral of \(\mathsf{\omega}\) along the curve \(\gamma\) is \(\int _{\gamma \subset \mathcal{M}} \mathsf{\omega} = \int _{\gamma} \omega _{\mu} \, \mathsf{d} x ^{\mu} = \int_{s _{1}}^{s _{2}} \omega _{\mu} \frac{d x ^{\mu} (s)}{d s} \, ds\).
+
+\begin{defn}{2-Form}
+	A \textbf{2-form}, \(\mathsf{\sigma}\) is an antisymmetric twice covariant (type \(\left( 0, 2 \right) \)) tensor such that \(\mathsf{\sigma} \left( \mathsf{v}, \mathsf{w} \right) = - \mathsf{\sigma} \left( \mathsf{w}, \mathsf{v} \right)  \) and in a coordinate basis, \(\mathsf{\sigma} = \sigma _{\mu \nu} \, \mathsf{d} x ^{\mu} \otimes \mathsf{d} x ^{nu}\).
+\end{defn}
+
+\begin{defm}{Wedge Product (1-forms)}
+	The \textbf{wedge product} is the fully antisymmetric tensor product.
+
+	\(\mathsf{d} x ^{\mu} \wedge \mathsf{d} x ^{\nu} = - \mathsf{d} x ^{\nu} \wedge  \mathsf{d} x ^{\mu} := 2 \mathsf{d} x ^{[\mu} \otimes \mathsf{d} x ^{\nu ]} = \mathsf{d} x ^{\mu} \otimes \mathsf{d} x ^{\nu} - \mathsf{d} x ^{\nu} \otimes \mathsf{d} x ^{\mu}\).
+\end{defm}
+
+\begin{defm}{\(k\)-Form}
+	A \textbf{\(k\)-form}, \(\mathsf{\sigma}\), is a fully antisymmetric \(k\)-times covariant (type \(\left( 0, k \right) \)) tensor.
+
+	\(\mathsf{\sigma} = \sigma \indices{_{\alpha _{1} \dots \alpha _{k}}} \mathsf{d} x ^{\alpha _{1}} \otimes \cdots \otimes \mathsf{d} x ^{\alpha _{k}} = \frac{1}{k !} \sigma \indices{ _{\alpha _{1} \dots \alpha _{k}}} \mathsf{d} x ^{\alpha _{1}} \wedge \cdots \wedge \mathsf{d} x ^{\alpha _{k}}\).
+\end{defm}
+
+\begin{defm}{Exterior Product (Wedge Product)}
+	If \(\mathsf{\sigma}\) is a \(k\)-form and \(\mathsf{\omega}\) is a \(p\)-form. The \textbf{exterior product} of \(\mathsf{\sigma}\) and \(\mathsf{\omega}\) is their fully antisymmetrized tensor product.
+
+	\(\left( \mathsf{\sigma} \wedge \mathsf{\omega} \right) \indices{_{\alpha _{1} \dots \alpha _{k} \beta _{1} \dots \beta _{p}}} = \frac{\left( k + p \right) !}{k! p!} \sigma \indices{_{[\alpha _{1} \dots \alpha _{k}}} \omega \indices{_{\beta _{1} \dots \beta _{p}]}}\).
+\end{defm}
+
+\begin{defm}{Exterior Derivative}
+	The \textbf{exterior derivative} \(\mathsf{d}\), is an operation that acts on a \(k\)-form and return a \(\left( k + 1 \right) \)-form.
+	\begin{equation*}
+		\begin{split}
+			\mathsf{d} \mathsf{\sigma} &= \frac{1}{k !} \mathsf{d} \left( \sigma \indices{_{\alpha _{1} \dots \alpha _{k}}} \right) \wedge \mathsf{d} x ^{\alpha _{1}} \wedge \cdots \wedge \mathsf{d} x ^{\alpha _{k}} \\
+			&= \frac{1}{k !} \partial _{\beta} \left( \sigma \indices{_{\alpha _{1} \dots \alpha _{k}}} \right) \mathsf{d} x ^{\beta} \wedge \mathsf{d} x ^{\alpha _{1}} \wedge \cdots \wedge \mathsf{d} x ^{\alpha _{k}} \\
+			&= \left( k + 1 \right) \partial _{[ \beta} \sigma \indices{_{\alpha _{1} \dots \alpha _{k}]}} \mathsf{d} x ^{\beta} \otimes \mathsf{d} x ^{\alpha _{1}} \otimes \cdots \otimes \mathsf{d} x ^{\alpha _{k}}
+		\end{split}
+	\end{equation*}
+\end{defm}
+
+\begin{defm}{Exact}
+	A \(k\)-form, \(\mathsf{\omega}\), is \textbf{exact} \(\iff \mathsf{\omega} = \mathsf{d} \mathsf{\sigma}\), where \(\mathsf{\sigma}\) is a \(\left( k - 1 \right) \)-form.
+\end{defm}
+
+\begin{defm}{Closed}
+	A \(k\)-form, \(\mathsf{\omega}\), is \textbf{closed} \(\iff \mathsf{d} \mathsf{\omega} = 0\).
+\end{defm}
+
+\begin{thm}{Exact \(\implies\) Closed}
+	\(\mathsf{\omega} = \mathsf{d} \mathsf{\sigma} \implies \mathsf{d} \mathsf{\omega} = 0\). However, the converse is not true in general.
+
+	\(\mathsf{d} \mathsf{\omega} = 0 \implies \mathsf{\omega} = \mathsf{d} \mathsf{\sigma}\) locally.
+\end{thm}
+
+\begin{thm}{Poincar\'e Lemma}	
+	If \(\mathsf{\omega}\) is defined in a contractible domain (open subset of a manifold), \(\mathsf{d} \mathsf{\omega} = 0 \iff \mathsf{\omega} = \mathsf{d} \mathsf{\sigma}\).
+\end{thm}
+
+\begin{noot}
+	When solving exact ODEs, we are actually have \(\mathsf{d} F = 0\) and we check \(\partial _{y} \partial _{x} F = \partial _{x} \partial _{y} F\) which we are actually checking for closeness.
+\end{noot}
+
+\begin{remarkbox}
+	If \(\mathsf{\omega}\) is exact then \(\mathsf{\omega} = \mathsf{d} f \implies \int _{\gamma} \mathsf{\omega} = \int _{\gamma} \mathsf{d} f = f(s _{2}) - f (s _{1})\). Also, \(\oint _{\gamma} \mathsf{\omega} = 0\).
+
+	In polar coordinate, \(\mathsf{d} \mathsf{\theta}\) is actually not exact as \(\oint _{\gamma} \mathsf{d} \mathsf{\theta} = 2 \pi n \neq 0\). Also, \(\Theta = \mathsf{d} \mathsf{\theta}\) is not defined at the origin.
+\end{remarkbox}
+
+\subsection{Smooth Maps and Diffeomorphisms}
+\subsubsection{Smooth Maps: Pullback and Pushforward}
+\begin{defn}{Smooth Map}
+	A map \(\varphi : \mathcal{M} \to \mathcal{M}'\) is a \textbf{smooth map} if and only if given  the atlases\(\left\{ \left( \mathcal{U} _{\alpha}, \phi _{\alpha} \right)  \right\} \) and \(\left\{ \mathcal{U}' _{\alpha}, \phi ' _{\alpha} \right\} \) of \(\mathcal{M}\) and \(\mathcal{M}'\), the functions \(\phi ' _{\alpha} \circ \varphi \circ \phi _{\alpha}: \R ^{n} \to \R ^{n'}\) is smooth.
+\end{defn}
+
+\begin{defm}{Pullback (Function)}
+	The map \(\varphi\) induces a map \(\varphi ^{\star}: \mathcal{F} _{\mathcal{M}} \to \mathcal{F} _{\mathcal{M}'}\) which we call the \textbf{pullback} between the spaces of functions \(\mathcal{F} _{\mathcal{M}}\) and \(\mathcal{F} _{\mathcal{M'}}\) according to the following rule:
+
+	Given a function \(f' : \mathcal{M} ' \to \R\), its \textbf{pull-back} \(\varphi ^{\star} f': \mathcal{M} \to \R\) is such that \(\varphi ^{\star} f' (p) := f' \circ \varphi (p) = f' (p)\), with \(p \in \mathcal{M}\).
+\end{defm}
+
+\begin{defm}{Pushforward (Vector)}
+	The map \(\varphi\) induces a map \(\varphi _{\star}: T _{p} \mathcal{M} \to T _{\varphi (p)} \mathcal{M'}\) called the \textbf{pushforward} between the tangent spaces \(T _{p} \mathcal{M}\) and \(T _{p} \mathcal{M'}\) according to the following rule:
+	
+	Given a vector \(\mathsf{v} \in T _{p} \mathcal{M}\) then \(\varphi _{\star} \mathsf{v} \in T _{p} \mathcal{M'}\) such that its action on a function \(f' \in \mathcal{F} _{\mathcal{M}'}\) is \(\left( \varphi _{\star} \mathsf{v} \right) | _{\phi (p) = p'} (f') := \mathsf{v} | _{p} \left( \varphi ^{\star} f' \right) \).
+	\begin{remarkbox}
+		In coordinate bases \(\left( x ^{1}, \dots, x ^{m} \right) \) and \(\left( y ^{1}, \dots, y ^{m'} \right) \):
+
+		\(\left( [\varphi _{\star}] \mathsf{v} \right) | _{\varphi (p)} (f') = v ^{i} | _{p} \frac{\partial f'}{\partial y ^{j}} \frac{\partial y ^{j}}{\partial x ^{i}} | _{p} \implies \left( [\varphi _{\star}] \mathsf{v} \right) | _{\varphi (p)} = v ^{i} | _{p} \frac{\partial y ^{j}}{\partial x ^{i}} | _{p} \frac{\partial}{\partial y ^{j}} | _{\partial (p)}\).
+	\end{remarkbox}
+	\begin{remarkbox}
+		If the map \(\varphi\) is not injective, than the pushforward of a vector field does not define a vector field.
+	\end{remarkbox}
+\end{defm}
+
+\begin{defm}{Pullback (one-form)}
+	Given a 1-form \(\mathsf{\omega} \in T _{p} ^{\star} \mathcal{M'}\) then \(\varphi ^{\star}: T _{\varphi (p)} ^{\star} \mathcal{M}' \to T _{p} ^{\star} \mathcal{M}\) called the \textbf{pullback} between the cotangent spaces \(T _{\varphi (p)} ^{\star} \mathcal{M}'\) and \(T _{p} ^{\star} \mathcal{M}\) according to the following rule:
+	Given a 1-form \(\mathsf{\omega}' \in T _{\varphi (p)} ^{\star} \mathcal{M'}\), then \(\varphi ^{\star} \mathsf{\omega}' \in T _{p} ^{\star} \mathcal{M}\) whose action on vectors in \(T _{p} \mathcal{M}\) is \(\left<\varphi ^{\star} \mathsf{\omega}', \mathsf{v} \right> | _{p} := \left< \mathsf{\omega}', \varphi _{\star} \mathsf{v} \right> | _{\varphi (p)}\).
+	\begin{remarkbox}
+		\(\mathsf{d} \left( \varphi ^{\star} \mathsf{\omega} \right) = \varphi ^{\star} \left( \mathsf{d} \mathsf{\omega} \right)  \).
+	\end{remarkbox}
+	\begin{remarkbox}
+		\(\varphi ^{\star} \left( \mathsf{\alpha} \wedge \mathsf{\beta} \right) = \left( \varphi ^{\star} \mathsf{\alpha} \right)\wedge \left( \varphi ^{\star} \mathsf{\beta} \right) \).
+	\end{remarkbox}
+	\begin{remarkbox}
+		In coordinate basis, \(\varphi ^{\star} \mathsf{\omega} = \left( \omega _{i} \circ \varphi \right)  \mathsf{d} \left( x ^{i} \circ \varphi \right)\).
+	\end{remarkbox}
+\end{defm}
+
+\begin{defm}{Pullback (k-form)}
+	\(\varphi ^{\star} \mathsf{\omega} = \varphi ^{\star} \left(\frac{1}{k !} \omega \indices{_{\alpha _{1} \dots \alpha _{k}}} \bigwedge _{i = 1} ^{k} \mathsf{d}x ^{\alpha _{i}} \right)\).
+\end{defm}
+
+\subsubsection{Diffeomorphisms}
+\begin{defm}{Diffeomorphism}
+	A map \(\varphi: \mathcal{M} \to \mathcal{M}'\) is a \textbf{diffeomorphism} if and only if \(\varphi\) and \(\varphi ^{-1}\) are both smooth bijections.
+	\begin{remarkbox}
+		For a diffeomorphism \(\varphi: \mathcal{M} \to \mathcal{M}\), pullback and pushfoward can be defined for all objects on the manifold as \(\varphi _{\star} = \left( \varphi ^{-1} \right) ^{\star}\).
+		\begin{remarkbox}
+			\(\left[ \varphi _{\star} \right] | _{p} ^{-1} = \left[ \varphi _{\star} ^{-1} \right] | _{\varphi(p)}  \).
+
+			\(\varphi _{\star} f(p) = \left( \varphi ^{-1} \right) ^{\star} f(p) \) and \(\left( \varphi ^{\star} \mathsf{v} \right) | _{p} (f) = \mathsf{v} _{\varphi ^{-1} (p)} \varphi _{\star} f\).
+		\end{remarkbox}
+	\end{remarkbox}
+\end{defm}
+
+\begin{defn}{Local Flow}
+	Consider a diffeomorphism \(\varphi: \mathcal{M} \to \mathcal{M}\) and let \(\gamma _{p}(s)\) be the parametrized curve in \(\mathcal{M}\) such that \(\gamma _{p} (0) = p\) and its tangent vector at every points \(\gamma _{p} (s)\) is the vector field \(\mathsf{k}\). \(\mathsf{k}\) is the generator of a set of local diffeomorphisms of the form \(\varphi _{s}: \mathcal{U} \to \varphi _{s} (\mathcal{U})\) such that \(\varphi _{s} (p) = \gamma _{p} (s)\). This set of local diffeomorphisms is called the \textbf{local flow} of \(\mathsf{k}\).
+	\begin{noot}
+		\begin{enumerate}[label=\arabic*)]
+			\item \(\varphi _{-s} \circ \varphi _{s} (p) = p \implies \varphi _{s} ^{-1} = \varphi _{-s}\)
+			\item \(\varphi _{s} (p) = \gamma (s)\)
+			\item \(\varphi _{s + t} (p) = \gamma (s + t)\)
+			\item \(\phi _{s} \left( \phi _{t} (p) \right) = \varphi _{s + t} (p)\)
+		\end{enumerate}
+	\end{noot}
+	Hence, local diffeomorphisms forms a group (Lie group). And the local flow of the vector field \(\mathsf{k}\) is complete if the associated curve \(\gamma _{p} (s)\) can be extended for all values \(s \in \R\).
+\end{defn}
+
+\subsubsection{Lie Derivative}
+\textbf{Motivation:} Let \(\varphi: \mathcal{M} \to \mathcal{M}\) be a diffeomorphism, \(\varphi\) establishes an isomorphism \(\varphi ^{\star}: \left( T _{\varphi (p)} \right) ^{r} _{s} \mathcal{M} \to \left( T _{p} \right) ^{r} _{s} \mathcal{M} \) for \(p \in \mathcal{M}\). The tensor \(\left[ \varphi ^{\star} \left( T _{\varphi (p)} \right)  \right] |_{p} - T |_{p} \) provides information about the difference between the value of a tensor field at \(\varphi (p)\) and at \(p\).
+
+\begin{defm}{Lie Derivative}
+	Consider a diffeomorphism \(\varphi : \mathcal{M} \to \mathcal{M}\) and its pullback \(\varphi ^{\star}: \left( T _{\varphi (p)} \right) ^{r} _{s} \mathcal{M} \to \left( T _{p} \right) ^{r} _{s} \mathcal{M}  \). Consider \(\varphi \equiv \varphi _{t}\) be the local flow generated by a vector field \(\mathsf{v}\).
+	The \textbf{Lie derivative} of a tensor \(\mathsf{T}\) along the (curve generated by) vector field \(\mathsf{v}\) at the point \(p \in \mathcal{M}\) is \(\left( \mathcal{L} _{\mathsf{v}} \mathsf{T} \right) | _{p} :=  \lim _{t \to 0} \frac{\left[ \varphi _{t} ^{\star} \left( \mathsf{T} _{\varphi _{t} (p)} \right)  \right] _{p} - T _{p} }{t}\).
+	\begin{noot}
+		\(t\) is a parameter along a curve generated by \(\mathsf{v}\).
+
+		Intuitively, the Lie derivative is to:
+		\begin{enumerate}[label=\arabic*)]
+			\item Take the tensor at t steps away from point \(p \in \mathcal{M}\) (along the curve generated by \(\mathsf{v}\)).
+			\item Move the tensor to point \(p\) by using the pullback.
+			\item Compute the difference between the two tensors at \(p\).
+			\item Divide the difference of the two tensors by \(t\) then take the limit \(t \to 0\).
+		\end{enumerate}
+		Acknowledgement: This intuition is from \href{https://file.notion.so/f/f/60cb0192-2769-448c-b567-2b1869af954b/9094c6a5-938a-43d1-bbbc-35bbf9c96ffd/%E6%82%A6%E6%82%A6%E7%88%B1%E7%89%A9%E7%90%86%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E7%AC%94%E8%AE%B02.7%E7%89%88%E6%9C%AC_GR_Notes_Differential_Geometry_and_General_Relativity_for_Beginners_by_Jiayue_Yang_(17).pdf?table=block&id=6c51f98a-7d8e-4071-a36c-1e23b89a8ed6&spaceId=60cb0192-2769-448c-b567-2b1869af954b&expirationTimestamp=1740916800000&signature=byzCKVB4bTNGJ-TXycNArj8XU5ZTh_T-w2VL_lcTssA&downloadName=%E6%82%A6%E6%82%A6%E7%88%B1%E7%89%A9%E7%90%86%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E7%AC%94%E8%AE%B02.7%E7%89%88%E6%9C%AC+GR_Notes_Differential_Geometry_and_General_Relativity_for_Beginners_by_Jiayue_Yang+%2817%29.pdf}{here}.
+		One can also think of Lie Derivative as something that measures the variation of a tensor field when moving 
+	\end{noot}
+	\begin{remarkbox}
+		Lie Derivative have the properties:
+		\begin{enumerate}[label=\arabic*)]
+			\item Linearity.
+			\item Preserves the tensor type, symmetries, and contractions because \(\varphi ^{\star}\) does.
+			\item Satisfies Leibniz rule under tensor product and contraction: \(\mathcal{L} _{\mathsf{v}}\left( \mathsf{T} \otimes \mathsf{S} \right) = \left( \mathcal{L} _{\mathsf{v}} \mathsf{T} \right) \otimes \mathsf{S} + \mathsf{T} \otimes \left( \mathcal{L} _{\mathsf{v}} \mathsf{S} \right) \).
+			\item Cartan identity: The Lie derivative of a k-form field along the vector field \(\mathsf{v}\) follows \(\mathcal{L} _{\mathsf{v}} = i _{\mathsf{v}} \mathsf{d} + \mathsf{d} i _{v}\) (took from JiayuePhysics).
+		\end{enumerate}
+	\end{remarkbox}
+\end{defm}
+
+\begin{defm}{Lie Derivative of Scalar Field}
+	For a scalar field \(f\), \(\mathcal{L} _{\mathsf{v}} f = \mathsf{v} (f)\), and in a coordinate basis, \(\mathcal{L} _{\mathsf{v}} f = v ^{\nu} \partial _{\nu} f\).
+\end{defm}
+
+\begin{defm}{Lie Derivative of Vector Field}
+	For a vector field \(\mathsf{w}\), \(\mathcal{L} _{\mathsf{v}} \mathsf{w} = \left[ \mathsf{v}, \mathsf{w} \right] \), and in a coordinate basis, \(\mathcal{L} _{\mathsf{v}} \mathsf{w} = \left( v ^{\nu} \partial _{\nu} w ^{\mu} - w ^{\nu} \partial _{\nu} v ^{\mu} \right) \partial _{\mu}\).
+\end{defm}
+
+\begin{defm}{Lie Derivative of 1-Form Field}
+	For a 1-form field \(\omega\) in a coordinate basis, \(\mathcal{L} _{\mathsf{v}} \mathsf{\omega} = \left( v ^{\nu} \left( \partial _{\nu} \omega _{\mu} \right) + \omega _{\nu} \left( \partial _{\mu} v ^{\nu} \right)   \right) \mathsf{d} x ^{\mu}\).
+\end{defm}
+
+\begin{ex}{More Lie Derivatives}
+	\(\omega = \omega _{\mu \nu} \mathsf{d} x ^{\mu} \otimes \mathsf{d} x ^{\nu} \implies \mathcal{L} _{\mathsf{v}} \mathsf{\omega} = \left( v ^{\alpha} \left( \partial _{\alpha} \omega _{\mu \nu}\right) + \omega _{\alpha \nu} \left( \partial _{\mu} v ^{\alpha} \right) + \omega _{\mu \alpha} \left( \partial _{v} v ^{\alpha} \right)  \right) \mathsf{d} x ^{\mu} \otimes \mathsf{d} x ^{\nu}\).
+
+	\(\mathsf{T} = T \indices{_{\mu} ^{\nu}} \mathsf{d} x ^{\mu} \otimes \partial _{\nu} \implies \mathcal{L} _{\mathsf{v}} \mathsf{T} = \left( v ^{\alpha} \left( \partial _{\alpha} T \indices{_{\mu} ^{\nu}} \right) + T \indices{_{\alpha} ^{\nu}} \left( \partial _{\mu} v ^{\alpha} \right) - T \indices{_{\mu} ^{\alpha}} \left( \partial _{\alpha} v ^{\nu} \right)  \right) \mathsf{d} x ^{\mu} \otimes \partial _{\nu}\).
+
+	\(\mathsf{T} = T \indices{_{\alpha \beta} ^{\mu \nu}} \mathsf{d} x ^{\alpha} \otimes \mathsf{d} x ^{\beta} \otimes \partial _{\mu} \otimes \partial _{\nu}\).
+
+	\(\implies \mathcal{L} _{\mathsf{v}} \mathsf{T} = \left( v ^{\gamma} \partial _{\gamma} T \indices{_{\alpha \beta} ^{\mu \nu}} + T \indices{_{\gamma \beta} ^{\mu \nu}} \partial _{\alpha} v ^{\gamma} + T \indices{_{\alpha \gamma} ^{\mu \nu}} \partial _{\beta} v ^{\gamma} - T \indices{_{\alpha \beta} ^{\gamma \nu}} \partial _{\gamma} v ^{\mu} - T \indices{_{\alpha \beta} ^{\mu \gamma}} \partial _{\gamma} v ^{\nu} \right) \mathsf{d} x ^{\alpha} \otimes \mathsf{d} x ^{\beta} \otimes \partial _{\mu} \otimes \partial _{\nu} \).
+\end{ex}
+
+\subsection{Pseudo-Riemannian Geometry}
+\subsubsection{Affine Connection and Covariant Derivative}
+\textbf{Motivation:} While Lie derivative is a derivative, we can't use it as a generalised gradient, as it doesn't change the type of the tensor. So we need to explore other derivatives. We take the derivative of a function \(f\) as \(\frac{\partial f}{\partial x ^{\mu}} = \partial _{\mu} f\). And for a vector \(\mathsf{v} = v ^{\mu} \mathsf{\Upsilon_{\mu}}\), \(\frac{\partial \mathsf{v}}{\partial x ^{\mu}}\) is a bad notation for the derivative of the vector because both the components and basis of \(\mathsf{v}\) can change. What we want to do is to write \(\frac{\partial \mathsf{\Upsilon}}{\partial x ^{\mu}}\) in terms of the bases (\(\frac{\partial \Upsilon}{\partial x ^{\mu}} = \Gamma \indices{^{\rho} _{\nu \mu}} \Upsilon _{\rho}\) with \(\Gamma \indices{^{\rho} _{\nu \mu}}\) describing how basis changes at different point).
+
+\begin{defm}{Affine Connection, Covariant Derivative}
+	An \textbf{affine connection} \(\nabla: \left( T _{p} \mathcal{M} \right) ^{r} _{s} \to \left( T _{p} \mathcal{M} \right) ^{r} _{s + 1}\) is a rule through which we assign to each tensor \(\mathsf{T}\) of type \(\left( r, s \right) \) and components \(T \indices{^{b c \dots} _{d e \dots}}\) another tensor field \(\nabla \mathsf{T}\) of type \(\left( r, s + 1 \right) \) and components \(\left( \nabla \mathsf{T} \right) \indices{^{b c \dots} _{d e \dots a}} \equiv \nabla _{a} T \indices{^{b c \dots} _{d e \dots}} \equiv T \indices{^{b c \dots} _{d e \dots; a}}\). We call \(\nabla \mathsf{T}\) the \textbf{covariant derivative} of \(\mathsf{T}\).
+	\begin{remarkbox}
+		Affine connection follows the properties:
+		\begin{enumerate}[label=\arabic*)]
+			\item Linearity.
+			\item Leibniz rule.
+			\item Commutes with contraction.
+			\item Over functions \(f\), it is the differential \(\nabla f = \mathsf{d} f\).
+		\end{enumerate}
+	\end{remarkbox}
+	\begin{noot}
+		There are infinitely many affine connections and infinite ways to build covariant derivative.
+	\end{noot}
+\end{defm}
+
+\begin{defm}{Directional Covariant Derivative}
+	We define the \textbf{directional covariant derivative} of \(\mathsf{T}\) in the direction of vector \(\mathsf{v}\) as the tensor \(\nabla _{\mathsf{v}} \mathsf{T}\) of type \(\left( r, s \right) \) of components \(\left( \nabla _{\mathsf{v}} \mathsf{T} \right) \indices{^{b c \dots} _{de \dots}} = v ^{a} \nabla _{a} T \indices{^{b c \dots} _{d e \dots}}\). \(\left( \nabla _{\mathsf{v}} \mathsf{T} \right) \indices{^{bc \dots} _{de \dots}} = \left< \nabla \mathsf{T}, \mathsf{v} \right> \).
+\end{defm}
+
+\begin{defm}{Coefficient of the Connection}
+	The \textbf{coefficient of the connection} in an arbitary basis \(\left\{ \mathsf{\Upsilon} _{a} \right\} \) is
+	\[
+		\Gamma \indices{^{a} _{bc}}:= \left( \nabla \mathsf{\Upsilon} _{b} \right) \indices{^{a} _{c}} = \left< \mathsf{\Upsilon} ^{a}, \nabla _{\mathsf{\Upsilon} _{c}} \mathsf{\Upsilon} _{b} \right> \implies \nabla _{c} \mathsf{\Upsilon} _{b} := \nabla _{\mathsf{\Upsilon} _{c}} \mathsf{\Upsilon} _{b} := \Gamma \indices{^{a} _{bc}} \mathsf{\Upsilon} _{a}.
+	\]
+	\(\Gamma \indices{^{a} _{bc}}\) is the \(a\)-th components of the covariant derivative of the \(b\)-th basis vector in the direction of the \(c\)-th basis vector.
+	\begin{remarkbox}
+		The notation for covariant derivative \(\nabla _{\mu} v ^{\nu} = \left( \nabla \mathsf{v} \right) \indices{_{\mu} ^{\nu}} \). Also...
+	\end{remarkbox}
+	\begin{noot}
+		Another convention is \(\Gamma \indices{^{a} _{bc}} := \left( \nabla \mathsf{\Upsilon} _{c} \right) \indices{^{a} _{b}} = \left< \mathsf{\Upsilon} ^{a}, \nabla _{\mathsf{\Upsilon} _{b}} \mathsf{\Upsilon} _{c} \right> \).
+	\end{noot}
+\end{defm}
+\(\nabla _{a} v ^{b} = \Upsilon _{a} (v ^{b}) + v ^{c} \Gamma \indices{^{b} _{c a}}\)
+
+\(\nabla _{\mu} v ^{\nu} = \partial _{\mu} v ^{\nu} + v ^{\sigma} \Gamma \indices{^{\nu} _{\sigma \mu}}\)
+
+\(\nabla _{a} \omega _{b} = \Upsilon _{a} (\omega _{b}) - \omega _{c} \Gamma \indices{^{c} _{ba}}\)
+
+\(\nabla _{\mu} \omega _{\nu} = \partial _{\mu} \omega _{nu} - \omega _{\sigma} \Gamma \indices{^{\sigma} _{\nu \mu}}\)
+
+Note:
+\(\frac{\partial \mathsf{v}}{\partial x ^{\mu}} = \left( \frac{\partial v ^{\nu}}{\partial x ^{\mu}} + v ^{\sigma} \Gamma \indices{^{\nu} _{ \sigma \mu}} \right) \Upsilon _{\nu}\).
+\end{document}
+Note: mass charge doesn't affect acceleration. (GR)
+\end{document}
