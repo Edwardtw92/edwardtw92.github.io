@@ -11,8 +11,9 @@ permalink: /mk
     <title>For Michelle</title>
   </head>
   <body>
-    <h1>Hello world!</h1>
-    <p>Welcome to my GitHub Pages site!</p>
+    <h1>For Michelle!</h1>
+    <a href="/study_notes.pdf">My notes</a>
+    <p>I will polish this website soon and change how it's hosted and built.</p>
   </body>
 </html>
 
